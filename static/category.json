@@ -1,0 +1,34 @@
+[
+    {
+        "name": "阅读笔记",
+        "slug": "reading-notes"
+    },
+    {
+        "name": "无病呻吟",
+        "slug": "shenyin"
+    },
+    {
+        "name": "篮球日记",
+        "slug": "basketball"
+    },
+    {
+        "name": "诗词歌赋",
+        "slug": "poem"
+    },
+    {
+        "name": "生活随笔",
+        "slug": "life"
+    },
+    {
+        "name": "社会观察",
+        "slug": "social"
+    },
+    {
+        "name": "影音娱乐",
+        "slug": "movie"
+    },
+    {
+        "name": "文艺创作",
+        "slug": "write"
+    }
+]
