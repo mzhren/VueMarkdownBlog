@@ -1,6 +1,6 @@
 # 简介
 VueMarkdownBlog 是基于Vuejs框架及markdown格式的静态博客生成器。超简单配置，通过markdown写作博客。
-![aaa](http://img.mzh.ren/jmwjl-responsive.png)
+![aaa](http://img.mzh.ren/截图_20200302110353.png)
 
 ## 特性
 静态站点生成器有很多，如nuxt,vuepress,hexo等。
@@ -8,7 +8,15 @@ VueMarkdownBlog 是基于Vuejs框架及markdown格式的静态博客生成器。
 
 而VueMarkdownBlog不通过打包工具将markdown文件转化成HTML文件。而是通过异步加载markdown文本，通过[vue-showdown](https://vue-showdown.js.org/zh/guide/#npm) 组件将markdown在前端转化成HTML。
 
-VueMarkdownBlog可直接部署使用，源工程文件在 [VMblog](https://github.com/mzhren/vmblog)。
+
+
+VueMarkdownBlog 可直接部署到服务器访问。本地服务器也可以，但通过file://形式访问不行。
+
+> Tip: built files are meant to be served over an HTTP server.
+  Opening index.html over file:// won't work.
+
+
+VueMarkdownBlog 可以对站点信息、分类、及友情链接做配置。如果你想修改博客主题风格或增加功能，可以访问源项目文件，其工程文件在 [VMblog](https://github.com/mzhren/vmblog)。
 
 
 ## 演示
