@@ -29,10 +29,40 @@ VueMarkdownBlog 可以对站点信息、分类、及友情链接做配置。如�
 
 ## 使用
 ### 写博文
-![项目目录](img/projects.png)
+项目目录结构如下：
+```
+|-- VueMarkdownBlog
+    |-- build.py
+    |-- CNAME
+    |-- index.html
+    |-- README.md
+    |-- static
+        |-- config
+        |   |-- ads.json
+        |   |-- blogroll.json
+        |   |-- category.json
+        |   |-- posts.json
+        |   |-- posts_backup.json
+        |   |-- site_config.json
+        |   |-- valine.json
+        |-- css
+        |   |-- app.46789fa86d849570c1d90e6636c8fd72.css
+        |-- pages
+        |   |-- about
+        |       |-- index.md
+        |-- posts
+            |-- wcgirl
+            |   |-- index.json
+            |   |-- index.md
+            |-- wutiaoren01
+                |-- index.json
+                |-- index.md
+
+```
+
 
 #### posts.json
-posts.json 文件是项目的本地数据库文件，新写一篇文章需向数据库添加一条记录,如写一篇测试文章，需要在JSON数组里添加以下内容：
+config 目录下 的posts.json 文件是项目的本地数据库文件，新写一篇文章需向数据库添加一条记录,如写一篇测试文章，需要在JSON数组里添加以下内容：
 ```json
 {
     "title": "测试一篇新文章",
@@ -46,20 +76,28 @@ posts.json 文件是项目的本地数据库文件，新写一篇文章需向数
     "slug": "newblog_for_test" 
   }
 ```
+你可以通过编写脚本，自动生成这个配置文件。
+
 #### 文章内容
 根据新建文章的slug,需要在posts目录下新建名为"newblog_for_test"的文件夹，在 newblog_for_test 目录下新建index.md文件。
 
-index.md 的内容将被异步取得转化成html,以博文的形貌呈现。
+index.md 的内容将被异步取得，通过[vue-showdown](https://vue-showdown.js.org/zh/guide/#npm) 组件转化成html,以博文的形貌呈现。
 
-#### 文章创建时间
+#### 新建
 可以通过VSCode编辑器自定义用户代码片段，如markdown.json:
 ```json
 {
-	"head": {
-		"prefix": "head",
+	"post": {
+		"prefix": "post",
 		"body": [
-			"# $1 ",
-			":monkey_face: 狂奔的男尸  :clock1: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND  :open_file_folder:  $2 "
+			"[标题]: <> ( $1 )",
+			"[描述]: <> ( $2 )",
+			"[作者]: <> (狂奔的男尸)",
+			"[时间]: <> ( $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND )",
+			"[分类]: <> ( $3 )",
+			"",
+			"# $4 ",
+			":monkey_face: 狂奔的男尸  :clock1: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND  :open_file_folder:  $5 "
 		],
 		"description": "markdown user post head"
 	}
@@ -68,10 +106,20 @@ index.md 的内容将被异步取得转化成html,以博文的形貌呈现。
 
 在md文档中输入`head` + tab 即可得到：
 ```markdown
-#  
-:monkey_face: 狂奔的男尸  :clock1: 2020-03-10 16:16:36  :open_file_folder:   
+[标题]: <> ( 测试 )
+[描述]: <> ( 测试文章 )
+[作者]: <> (狂奔的男尸)
+[时间]: <> ( 2020-03-10 16:16:36 )
+[分类]: <> ( 测试 )
+
+#  测试
+:monkey_face: 狂奔的男尸  :clock1: 2020-03-10 16:16:36  :open_file_folder:   测试
 ```
 其中：
+[标题]: <> (  ) 等为MarkDown文件的注释，不会显示在页面当中。用以生成相关的配置文件。
+
+标题及之后都是要显示的内容
+
 + :monkey_face: 作者头像
 + :clock1: 时间符号 
 + :open_file_folder: 分类符号
@@ -79,7 +127,25 @@ index.md 的内容将被异步取得转化成html,以博文的形貌呈现。
 效果：
 ![markdown](img/md_template.png)
 
+## 将markdown文件注释信息转化成json数据插入`posts.json`
+可以通过 build.py 文件，在项目中执行：
+```shell
+py -3 build.py static\posts\newblog_for_test\index.md
+```
+该py文件实现两个功能：
++ 在`newblog_for_test`目录下生成 `index.json` 文件
++ 将该文章的json信息添加到 `posts.json` 文件中
+
 ## 配置
+配置项在 config 目录下，包括：
++ 站点信息配置
++ 文单类别配置
++ 友情链接配置
++ 广告配置
++ valine评论组件配置
+
+以及最重要的 posts.json 文件，充当数据库的作用。
+
 ### 站点配置
 site_config.json 文件：
 ```json
@@ -146,7 +212,28 @@ blogroll.json
     }
 ]
 ``` 
-
+### 广告配置
+```json
+[
+    {
+        "ads": "阿里云服务器 最高 ¥2000 红包",
+        "desc": "云服务器、主机等产品通用，可叠加官网常规优惠使用 | 限时领取",
+        "url": "https://www.aliyun.com/minisite/goods?userCode=8cwangm6"
+    }
+]
+```
+### 评论组件配置
+评论组件使用的是 [valine]([https://link](https://valine.js.org/))，一款快速、简洁且高效的无后端评论系统。
+```json
+{
+      "appId": "PmIcxexLw4DjaBA6jHvfFM5f-gzGzoHsz",
+      "appKey": "3V3gyODpBhiVIk49DTTOdDrn",
+      "notify": false,
+      "verify": false,
+      "avatar": "mp",
+      "placeholder": "请留下您的观点！"
+}
+```
 
 
 
