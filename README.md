@@ -1,4 +1,5 @@
-# 简介
+
+# 简洁，简洁，还是简洁...
 VueMarkdownBlog 是基于Vuejs框架及markdown格式的静态博客生成器。超简单配置，通过markdown写作博客。
 ![VueMarkdownBlog-cover](img/VueMarkdownBlog-cover.jpg)
 
@@ -23,8 +24,18 @@ VueMarkdownBlog 可直接部署到服务器访问。本地服务器也可以，�
 
 VueMarkdownBlog 可以对站点信息、分类、及友情链接做配置。如果你想修改博客主题风格或增加功能，可以访问源项目文件，其工程文件在 [VMblog](https://github.com/mzhren/vmblog)。
 
+## 主题风格
+博客使用的是“莫泊桑”的主题。本主题是hardcode的，焊死的。如果你想修改博客主题风格或增加功能，可以访问源项目文件，其工程文件在 [VMblog](https://github.com/mzhren/vmblog)。
 
+莫泊桑是世界短篇小说之王。以他名字命名的该主题非常的简洁，同时自适应各种设置。
 
+网友非常喜欢这款主题，为它写了各个版本：
++ Typecho：https://github.com/pagecho/maupassant/
++ Octopress：https://github.com/pagecho/mewpassant/
++ Farbox：https://github.com/pagecho/Maupassant-farbox/
++ WordPress：https://github.com/iMuFeng/maupassant/ （by iMuFeng）
++ Ghost: https://github.com/LjxPrime/maupassant (by LjxPrime)
++ Hexo: https://github.com/tufu9441/maupassant-hexo (by tufu9441)
 
 
 ## 使用
