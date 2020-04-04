@@ -10,6 +10,7 @@ def markdown(md_file):
     title = meta(f.readline())
     description =  meta(f.readline())
     date =  meta(f.readline())
+    coverImage =  meta(f.readline())
     category =  get_category(meta(f.readline()))
     post = {
         "title": title,
@@ -17,7 +18,7 @@ def markdown(md_file):
         "status": "published",
         "date": date,
         "dateModified": "",
-        "coverImage": "",
+        "coverImage": coverImage,
         "category": category,
         "slug": slug
     }
