@@ -1,0 +1,57 @@
+{
+    "blogroll":[
+        {
+            "site": "码中人",
+            "url": "http://www.mzh.ren/",
+            "description": "'码中人'是一个帮助开发者成长的社区，技术文章由'码中人社区'的技术大牛和极客共同编辑为你筛选出最优质的干货，其中包括：Android、iOS、前端、后端等方面的内容"
+        },
+        {
+            "site": "大众消弱手册",
+            "url": "http://www.dzxfsc.com",
+            "description": "「大众消费手册」面向大众生活、是一个汇集广大网友消费经验的平台，提供丰富的优惠信息、特价资讯。"
+        }
+    ],
+    "ads":[
+        {
+            "ads": "阿里云服务器 最高 ¥2000 红包",
+            "desc": "云服务器、主机等产品通用，可叠加官网常规优惠使用 | 限时领取",
+            "url": "https://www.aliyun.com/minisite/goods?userCode=8cwangm6"
+        }
+    ],
+    "categories":[
+        {
+            "name": "阅读笔记",
+            "slug": "reading-notes"
+        },
+        {
+            "name": "无病呻吟",
+            "slug": "shenyin"
+        },
+        {
+            "name": "篮球日记",
+            "slug": "basketball"
+        },
+        {
+            "name": "诗词歌赋",
+            "slug": "poem"
+        },
+        {
+            "name": "生活随笔",
+            "slug": "life"
+        },
+        {
+            "name": "社会观察",
+            "slug": "social"
+        },
+        {
+            "name": "影音娱乐",
+            "slug": "movie"
+        },
+        {
+            "name": "文艺创作",
+            "slug": "write"
+        }
+    ]
+
+
+}
